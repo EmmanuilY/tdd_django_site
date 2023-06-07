@@ -30,6 +30,18 @@ def test_jump_to_films_page(browser):
     # She is taken to the "Films" page
     assert "Films" in browser.title
 
+    #She see name and poster of films
+    films = browser.find_elements(By.CSS_SELECTOR, ".film")
+
+    for film in films:
+        # Ensure every film block has an image and a h2 title
+        img = film.find_element(By.TAG_NAME, "img")
+        title = film.find_element(By.TAG_NAME, "h2")
+
+        # Test that the image has a src (url) and the title has some text.
+        assert img.get_attribute("src") is not None
+        assert title.text is not None
+
 
 def test_jump_to_serials_page(browser):
     # Visitor come to site
@@ -40,3 +52,14 @@ def test_jump_to_serials_page(browser):
 
     # She is taken to the "Serials" page
     assert "Serials" in browser.title
+
+    serials = browser.find_elements(By.CSS_SELECTOR, ".serial")
+
+    for serial in serials:
+        # Ensure every serial block has an image and a h2 title
+        img = serial.find_element(By.TAG_NAME, "img")
+        title = serial.find_element(By.TAG_NAME, "h2")
+
+        # Test that the image has a src (url) and the title has some text.
+        assert img.get_attribute("src") is not None
+        assert title.text is not None

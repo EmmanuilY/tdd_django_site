@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Films and Serials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .films, .serials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .film, .serial {
+            width: calc(100% / 3 - 20px);
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .film img, .serial img {
+            width: 100%;
+            height: auto;
+        }
+        h2 {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'films' %}">Films</a>
+        <a href="{% url 'serials' %}">Serials</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
