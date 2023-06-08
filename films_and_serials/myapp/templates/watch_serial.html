@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+    {% if film %}
+        <div class="film_detail">
+            <h1>{{ film.name }}</h1>
+            <img src="{% static film.poster %}" alt="{{ film.name }}">
+            <video controls>
+                <source src="{% static film.video %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    {% elif serial %}
+        <div class="serial_detail">
+            <h1>{{ serial.name }}</h1>
+            <img src="{% static serial.poster %}" alt="{{ serial.name }}">
+            <video controls>
+                <source src="{% static serial.video %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    {% endif %}
+{% endblock %}

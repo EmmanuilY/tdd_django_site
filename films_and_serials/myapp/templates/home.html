@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .box {
-            float: left;
-            width: 45%;
-            padding: 2.5%;
-            margin: 1%;
-            text-align: center;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: all 0.5s ease;
-        }
-
-        .box:hover {
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .box a {
-            text-decoration: none;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="box">
-            <h2>Films</h2>
-            <a href="{% url 'films' %}">Go to Films</a>
-        </div>
-
-        <div class="box">
-            <h2>Serials</h2>
-            <a href="{% url 'serials' %}">Go to Serials</a>
-        </div>
+{% extends "base_generic.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="films">
+    <h2>Films</h2>
+    {% for film in films %}
+    <div class="film">
+        <a href="/watch/film/{{ film.url }}">
+            <img src="{{ film.poster }}" alt="{{ film.name }}">
+            <h3>{{ film.name }}</h3>
+        </a>
     </div>
-</body>
-</html>
+    {% endfor %}
+</div>
+
+<div class="serials">
+    <h2>Serials</h2>
+    {% for serial in serials %}
+    <div class="serial">
+        <a href="/watch/serial/{{ serial.url }}">
+            <img src="{{ serial.poster }}" alt="{{ serial.name }}">
+            <h3>{{ serial.name }}</h3>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
